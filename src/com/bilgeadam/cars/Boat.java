@@ -1,51 +1,36 @@
 package com.bilgeadam.cars;
 
-public class Car extends Vehicle{
+public class Boat extends Vehicle{
 	private Engine engine;
 	private GearType gearType;
-	private int capacity;
 	
-	public Car(int numOfTyres, String color, Engine engine, GearType gearType, int capacity) {
+	
+	public Boat(int numOfTyres, String color, Engine engine, GearType gearType) {
 		super(numOfTyres, color);
 		this.engine = engine;
 		this.gearType = gearType;
-		this.capacity = capacity;
 	}
-
 
 	public Engine getEngine() {
 		return engine;
 	}
 
-
 	public void setEngine(Engine engine) {
 		this.engine = engine;
 	}
-
 
 	public GearType getGearType() {
 		return gearType;
 	}
 
-
 	public void setGearType(GearType gearType) {
 		this.gearType = gearType;
-	}
-
-
-	public int getCapacity() {
-		return capacity;
-	}
-
-
-	public void setCapacity(int capacity) {
-		this.capacity = capacity;
 	}
 	
 	@Override 
 	public boolean equals(Object o) {
-		if(o instanceof Car) {
-			Car e = (Car) o;
+		if(o instanceof Boat) {
+			Boat e = (Boat) o;
 			if(e.engine.getSerialNumber().equals(this.engine.getSerialNumber())) {
 				return true;
 			}else {
@@ -59,19 +44,17 @@ public class Car extends Vehicle{
 	@Override
 	public String toString() {
 		return ""+ this.engine.toString()
-				+ ", gear type : "+ this.gearType.name()
-				+", capacity : " + this.capacity;
+				+ ", gear type : "+ this.gearType.name();
 	}
-
 
 	@Override
 	public boolean startEngine() {
 		return true;
 	}
 
-
 	@Override
 	public double calculateConsumeRate(int miles) {
+		
 		return miles / gearType.consumeRatePerMile(engine.getEngineType());
 	}
 	
