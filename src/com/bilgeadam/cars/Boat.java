@@ -1,6 +1,6 @@
 package com.bilgeadam.cars;
 
-public class Boat extends Vehicle{
+public class Boat extends Vehicle implements Fixable{
 	private Engine engine;
 	private GearType gearType;
 	
@@ -56,6 +56,11 @@ public class Boat extends Vehicle{
 	public double calculateConsumeRate(int miles) {
 		
 		return miles / gearType.consumeRatePerMile(engine.getEngineType());
+	}
+
+	@Override
+	public void getFixed() {
+		System.out.println("Boat get fixed");
 	}
 	
 }
